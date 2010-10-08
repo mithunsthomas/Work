@@ -25,6 +25,9 @@ function connect_perm() {
 } // function connect_perm()
 
 
+/*
+ * Accesses the database of your choice and extracts information from it
+ */
 function connect_block($op = 'list', $delta = 0, $edit = array()){
     if ($op == "list") {
         // Generate listing of blocks from this module, for the admin/block page
@@ -35,24 +38,29 @@ function connect_block($op = 'list', $delta = 0, $edit = array()){
 
     else if ($op == 'view') {
 
-        db_set_active('mydb');
+        db_set_active('mydb');//Replace with the key you created for your database
 
-        $result=db_query('SELECT * FROM test_table');
+        $result=db_query('SELECT * FROM test_table');//Replace with your query
 
+        /*
+         * Fetches the result from the query
+         * Multiple rows can be fetched using loops
+         * name and id should be replaced by columns in your database
+         * More columns can be accessed as well
+         */
         $row=db_fetch_object($result);
         $name=$row->name;
         $id=$row->id;
-        var_dump($row);
-
+      
         $block_content = '';
 
-        $block_content .=  $name .'<br />'.$id.'<br />';
+        $block_content .=  $name .'<br />'.$id.'<br />';//This is what is going to be displayed in the block
 
         $block = array();
-        $block['subject']="Connected to Database";
+        $block['subject']="Connected to Database";//Replace with the subject of your choice
         $block['content']=$block_content;
 
-        //Switch back to the default connection when finished.
+        //Switches back to the default connection when finished.
         db_set_active('default');
         return $block;
   }
