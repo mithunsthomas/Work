@@ -1,0 +1,4 @@
+; $Id$
+name = Connect
+description = Enables users to connect to external databases.
+core = 6.x
