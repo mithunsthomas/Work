@@ -8,7 +8,7 @@
 function connect_help($path, $arg) {
   $output = '';  //declare your output variable
   switch ($path) {
-    case "admin/help#onthisdate":
+    case "admin/help#connect":
       $output = '<p>'.  t("Connects to non-default databases") .'</p>';
       break;
   }
@@ -18,7 +18,7 @@ function connect_help($path, $arg) {
 
 /**
 * Valid permissions for this module
-* @return array An array of valid permissions for the onthisdate module
+* @return array An array of valid permissions for the connect module
 */
 function connect_perm() {
   return array('access connect');
